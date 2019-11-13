@@ -27,4 +27,13 @@ class Circle{
     getColor(){
         return this.color;
     }
+
+    update(){
+        this.y -= 5;
+    }
+
+    onScreen(){
+        if (this.y <= -100) return false;
+        return true;
+    }
 }

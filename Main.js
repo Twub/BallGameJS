@@ -56,17 +56,29 @@ function update(){
     drawObj("rect", playerObj);
     if(weaponShots.length >= 1){
         for(let tempCircle of weaponShots){
+            tempCircle.update();
             drawObj("circle", tempCircle);
         }
     }
+    clearObj();
 }
 
 function fireWeapon(){
-    var centerX = playerObj.getX() /2;
+    var centerX = playerObj.getX() + playerObj.getWidth() / 2;
     var centerY = playerObj.getY() - 30;
     var radius = 20;
     var tempCircle = new Circle(centerX, centerY, radius);
     weaponShots.push(tempCircle);
+}
+
+function clearObj(){
+    if (weaponShots.length >= 1){
+        for(let i = 0; i < weaponShots.length; i++){
+            if (weaponShots[i].onScreen == false){
+                weaponShots.splice(i,i);
+            }
+        }
+    }
 }
 
 
