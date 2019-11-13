@@ -33,4 +33,12 @@ class Player{
     getColor(){
         return this.color;
     }
+
+    moveLeft(offset){
+        this.x -= offset;
+    }
+
+    moveRight(offset){
+        this.x += offset;
+    }
 }
