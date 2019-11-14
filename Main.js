@@ -3,6 +3,7 @@ window.onload = setup;
 var playerObj;
 var moveSpeed = 10;
 var weaponShots = [];
+var fallingObj = [];
 
 function setup(){
     playerObj = createElement(350/2-50/2, 550, 50, 60, "red", "player");
@@ -60,6 +61,13 @@ function update(){
             drawObj("circle", tempCircle);
         }
     }
+    if(fallingObj.length >= 1){
+        for(let tempCircle of fallingObj){
+            tempCircle.update();
+            drawObj("circle", tempCircle);
+        }
+    }
+    createFallingObj();
     clearObj();
 }
 
@@ -79,6 +87,14 @@ function clearObj(){
             }
         }
     }
+}
+
+function createFallingObj(){
+    var centerX = Math.random()*350;
+    var centerY = -60;
+    var radius = 30;
+    var tempObj = new FallingCircle(centerX, centerY, radius);
+    fallingObj.push(tempObj);
 }
 
 
